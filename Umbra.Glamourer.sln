@@ -1,9 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbra.Glamourer", "Umbra.Glamourer\Umbra.Glamourer.csproj", "{3A729C3B-68AE-4ED6-9E32-A85BC1956847}"
-				ProjectSection(ProjectDependencies) = postProject
-								{56BDA3DD-7770-4412-93E7-79FF05559E36} = {56BDA3DD-7770-4412-93E7-79FF05559E36}
-				EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
