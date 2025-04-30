@@ -1,0 +1,195 @@
+<udt>
+    <node id="popup">
+        <node class="header">
+            <node class="text" value="Designs"/>
+            <node class="search-wrapper">
+                <string-input-node id="filter-input" immediate="true"/>
+            </node>
+            <node class="buttons">
+                <button-node id="btn-revert-default" icon="Undo" tooltip="Revert the applied design back to game default."/>
+                <button-node id="btn-revert-auto" icon="Sync" tooltip="Revert the applied design back to automation."/>
+                <button-node id="btn-open-glamourer" icon="ExternalLinkAlt" tooltip="Open the Glamourer window."/>
+            </node>
+        </node>
+        <node class="body" overflow="false">
+            <node class="content" id="design-list"/>
+        </node>
+        <node class="footer">
+            <node class="apply-btn selected" id="apply-self">
+                <node class="bullet"/>
+                <node class="text" value="Apply to Self"/>
+            </node>
+            <node class="apply-btn" id="apply-target">
+                <node class="bullet"/>
+                <node class="text" value="Apply to Target"/>
+            </node>
+        </node>
+    </node>
+
+    <template name="design-item">
+        <argument name="name"/>
+        <argument name="directory"/>
+
+        <node class="design-item">
+            <node class="bg"/>
+            <node class="name" value="${name}"/>
+            <node class="dir" value="${directory}"/>
+        </node>
+    </template>
+
+    <![CDATA[
+    #popup {
+        flow: vertical;
+        size: 400 500;
+        
+        .design-item {
+            auto-size: grow fit;
+            padding: 2 8;
+            transition-duration: 250;
+            transition-type: ease-out-sine;
+            stroke-color: 0;
+            stroke-width: 1;
+            margin: 0 2 0 0;
+            background-color: 0;
+            
+            & > .name {
+                auto-size: grow fit;
+                anchor: middle-left;
+                color: "Widget.PopupMenuText";
+                outline-color: "Widget.PopupMenuTextOutline";
+                outline-size: 1;
+                text-overflow: false;
+                word-wrap: false;
+            }
+            
+            & > .dir {
+                anchor: middle-left;
+                color: "Widget.PopupMenuTextMuted";
+                outline-color: "Widget.PopupMenuTextOutline";
+                outline-size: 1;
+                font-size: 10;
+                text-overflow: false;
+                max-width: 150;
+            }
+            
+            &:hover {
+                stroke-color: "Window.AccentColor";
+                transition-duration: 15;
+            }
+            
+            & > .bg {
+                anchor: none;
+                auto-size: grow;
+                background-color: 0;
+                transition-type: ease-out-sine;
+                transition-duration: 500;
+                margin: -1 -8;
+            }
+            
+            & > .bg.clicked {
+                background-color: "Window.AccentColor";
+                margin: 1 150 1 -8;
+                transition-remove-class: "clicked";
+                transition-duration: 10;
+            }
+        }
+        
+        & > .header {
+            padding: 8;
+            auto-size: grow fit;
+            border-color: "Widget.PopupBorder";
+            border-width: 0 0 1 0;
+            gap: 8;
+            background-color: "Widget.PopupBackground.Gradient1";
+            margin: 2 2 0 2;
+            drop-shadow: 0 4 8 8;
+            border-radius: 5;
+            rounded-corners: top-left top-right;
+            
+            & > .text {
+                anchor: middle-left;
+                color: "Widget.PopupMenuText";
+                outline-color: "Widget.PopupMenuTextOutline";
+                outline-size: 1;
+            }
+            
+            & > .search-wrapper {
+                anchor: middle-left;
+                auto-size: grow fit;
+            }
+            
+            & > .buttons {
+                anchor: middle-left;
+                gap: 8;
+            }
+        }
+        
+        & > .body {
+            flow: vertical;
+            auto-size: grow;
+            scrollbar-track-color: 0;
+            
+            & > .content {
+                flow: vertical;
+                auto-size: grow fit;
+                padding: 8;
+                gap: 2;
+            }
+        }
+        
+        & > .footer {
+            auto-size: grow fit;
+            padding: 8;
+            gap: 8;
+            background-color: "Widget.PopupBackground.Gradient1";
+            margin: 0 2 0 2;
+            border-color: "Widget.PopupBorder";
+            border-width: 1 0 0 0;
+            
+            & > .apply-btn {
+                anchor: middle-center;
+                auto-size: grow fit;
+                size: 0 24;
+                padding: 0 8;
+                gap: 8;
+                background-color: "Widget.PopupBackground.Gradient2";
+                stroke-color: "Widget.PopupBorder";
+                stroke-width: 1;
+                stroke-inset: 0;
+                border-radius: 5;
+                transition-duration: 150;
+                transition-type: ease-out-sine;
+                
+                & > .bullet {
+                    anchor: middle-left;
+                    size: 8;
+                    border-radius: 4;
+                    background-color: "Widget.PopupMenuText";
+                    opacity: 0;
+                }
+                
+                & > .text {
+                    anchor: middle-center;
+                    color: "Widget.PopupMenuText";
+                    outline-color: "Widget.PopupMenuTextOutline";
+                    outline-size: 1;
+                }
+                
+                &:hover {
+                    stroke-color: "Window.AccentColor";
+                    transition-duration: 16;
+                }
+                
+                &.selected {
+                    background-color: "Input.Background";
+                    stroke-inset: 1;
+                    stroke-radius: 3;
+                    
+                    & > .bullet { opacity: 1; background-color: "Input.Text"; }
+                    & > .text { color: "Input.Text"; outline-color: "Input.TextOutline"; }
+                }
+            }
+        }
+    }
+    ]]>
+</udt>
