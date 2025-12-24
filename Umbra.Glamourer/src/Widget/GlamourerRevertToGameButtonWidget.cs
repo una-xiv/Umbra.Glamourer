@@ -1,5 +1,5 @@
-﻿using Dalamud.Game.ClientState.Objects;
-using Dalamud.Interface;
+﻿using Dalamud.Interface;
+using Dalamud.Plugin.Services;
 using System.Collections.Generic;
 using Umbra.Common;
 using Umbra.Widgets;
